@@ -1,18 +1,15 @@
 import React from 'react';
 
-const TodoItem = (props) => {
-  const { list } = props;
-  if (list.length) {
-    const todos = [];
+const TodoItem = props => {
+  const {list} = props;
 
-    list.map((todo, index) => {
-      todos.push(<div key={index}>{todo.item}</div>);
-    });
+  const todos = [];
 
-    return <div>{todos}</div>;
-  } else {
-    return <div> 还没有代办事项</div>;
-  }
+  list.map((todo, index) => {
+    todos.push(<div key={index}>{todo.item}</div>);
+  });
+
+  return <div>{todos}</div>;
 };
 
 // TodoItem.propTypes = {
