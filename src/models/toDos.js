@@ -4,7 +4,9 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: []
+    list: [{
+      item:'drink water'
+    }]
   },
 
   subscriptions: {
@@ -17,7 +19,7 @@ export default {
       yield put({ type: 'save' });
     },
 
-    * todoAdd ({ payload }, { call, put }) {
+    * todoAdd ({ payload:list }, { call, put }) {
       yield put({
         type: `addSuccess`,
         payload: {
@@ -32,7 +34,7 @@ export default {
       return { ...state, ...action.payload };
     },
     addSuccess(state, action) {
-      return { ...state, ...action.payload };
+      return { ...state, ...action.payload.list };
     },
   },
 

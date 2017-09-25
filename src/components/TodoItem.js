@@ -1,26 +1,27 @@
 import React from 'react';
-import { connect } from 'dva'
 
-const TodoItem = ({
-	dispatch,
-	toDos,
-	toDos: {
-		list
-	}
+const TodoItem = (props) => {
+  const { list } = props;
+  if (list.length) {
+    const todos = [];
 
-}) => {
-	list.map((item,key) =>{
-		return <div>{item.item}</div>
-	})
-};
+    list.map((todo, index) => {
+      todos.push(<div key={index}>{todo.item}</div>);
+    });
 
-TodoItem.propTypes = {
-};
-
-const mapStateToProps = ({toDos}) => {
-  return {
-    toDos
+    return <div>{todos}</div>;
+  } else {
+    return <div> 还没有代办事项</div>;
   }
-}
+};
 
-export default connect(mapStateToProps)(TodoItem)
+// TodoItem.propTypes = {
+// };
+
+// const mapStateToProps = ({toDos}) => {
+//   return {
+//     toDos
+//   }
+// }
+
+export default TodoItem;

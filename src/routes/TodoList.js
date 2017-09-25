@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { connect } from 'dva';
 import styles from './IndexPage.css';
 import { 
@@ -19,12 +19,12 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
+
   const onPressEnter = () => {
     let payload = getFieldsValue()
 
     let item = payload.item
-
-    let list = []
+    let list = toDos.list;
     list.push({item:item})
 
     dispatch({
@@ -54,7 +54,7 @@ const TodoList = ({
             />
           )}
         </FormItem>
-        <TodoItem />
+        <TodoItem list={toDos.list} />
     </div>
   );
 }
