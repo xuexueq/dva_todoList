@@ -1,24 +1,19 @@
-import React from 'react';
+import React from 'react'
+// import PropTypes from 'prop-types'
 
-const TodoItem = props => {
-  const {list} = props;
+const TodoItem = (props) => {
+  let { list } = props
+  let todos = []
 
-  const todos = [];
+  list.map((item, index) => {
+      todos.push(<div key={index}>{item.item}</div>)
+  })
+  return <div>{todos}</div>
 
-  list.length && list.map((todo, index) => {
-    todos.push(<div key={index}>{todo.item}</div>);
-  });
+} 
 
-  return <div>{todos}</div>;
-};
-
-// TodoItem.propTypes = {
-// };
-
-// const mapStateToProps = ({toDos}) => {
-//   return {
-//     toDos
-//   }
-// }
+/* TodoItem.propTypes = {
+  props: propTypes.any
+ };*/
 
 export default TodoItem;
