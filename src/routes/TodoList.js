@@ -43,7 +43,9 @@ const TodoList = ({
         })
        
       }
-
+  let todos=list.map(function(item, index){
+    return <TodoItem todo={item} key={index+1}/>
+  })
   return (
     <div className={styles.todos}>
         <h1 style={{marginBottom: '10px'}}>todos</h1>
@@ -56,11 +58,12 @@ const TodoList = ({
             placeholder="What needs to be done?"
             style = {{width: 200}}
             onPressEnter = {onPressEnter}
-            
             />
           )}
         </FormItem>
-        <TodoItem list={list} />
+        <div>
+          {todos}
+        </div>
     </div>
   );
 }
