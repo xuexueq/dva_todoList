@@ -1,6 +1,6 @@
 
 import { connect } from 'dva';
-import styles from './IndexPage.css';
+import styles from './TodoList.css';
 import { 
   Input,
   Form
@@ -24,14 +24,15 @@ const TodoList = ({
   }
 }) => {
 
-  const onPressEnter = () => {
+  const onPressEnter = (e) => {
     let payload = getFieldsValue()
 
-
+        //console.log(document)
         let item = payload.item
+        let iscompleted = false
 
         if(item){
-          list.push({item:item})          
+          list.push({item:item,iscompleted:false})          
         }
 
         dispatch({
@@ -40,11 +41,12 @@ const TodoList = ({
             list: list
           }
         })
+       
       }
 
   return (
-    <div>
-        <h1>todos</h1>
+    <div className={styles.todos}>
+        <h1 style={{marginBottom: '10px'}}>todos</h1>
         <FormItem>
           {getFieldDecorator('item',{
             initialValue: ''
@@ -54,6 +56,7 @@ const TodoList = ({
             placeholder="What needs to be done?"
             style = {{width: 200}}
             onPressEnter = {onPressEnter}
+            
             />
           )}
         </FormItem>

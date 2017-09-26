@@ -13,24 +13,17 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
-    },
-
-    * todoAdd ({ payload:list }, { call, put }) {
+    * todoAdd ({ payload}, { call, put }) {
       yield put({
         type: `addSuccess`,
         payload: {
-          list: list
+          list: payload.list
         }
       })
     }
   },
 
   reducers: {
-    save(state, action) {
-      return { ...state, ...action.payload };
-    },
     addSuccess(state, action) {
       return { ...state, ...action.payload.list };
     },
