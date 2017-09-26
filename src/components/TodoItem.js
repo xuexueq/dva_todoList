@@ -1,27 +1,19 @@
-import React from 'react';
+import React from 'react'
+// import PropTypes from 'prop-types'
 
 const TodoItem = (props) => {
-  const { list } = props;
-  if (list.length) {
-    const todos = [];
+  let { list } = props
+  let todos = []
 
-    list.map((todo, index) => {
-      todos.push(<div key={index}>{todo.item}</div>);
-    });
+  list.map((item, index) => {
+      todos.push(<div key={index}>{item.item}</div>)
+  })
+  return <div>{todos}</div>
 
-    return <div>{todos}</div>;
-  } else {
-    return <div> 还没有代办事项</div>;
-  }
-};
+} 
 
-// TodoItem.propTypes = {
-// };
-
-// const mapStateToProps = ({toDos}) => {
-//   return {
-//     toDos
-//   }
-// }
+/* TodoItem.propTypes = {
+  props: propTypes.any
+ };*/
 
 export default TodoItem;

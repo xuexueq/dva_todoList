@@ -4,9 +4,7 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: [{
-      item:'drink water'
-    }]
+    list: []
   },
 
   subscriptions: {
