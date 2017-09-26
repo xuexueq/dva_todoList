@@ -5,7 +5,7 @@ const TodoItem = props => {
 
   const todos = [];
 
-  list.map((todo, index) => {
+  list.length && list.map((todo, index) => {
     todos.push(<div key={index}>{todo.item}</div>);
   });
 
