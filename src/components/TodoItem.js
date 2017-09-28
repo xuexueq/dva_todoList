@@ -14,11 +14,11 @@ const TodoItem = ({
   const completedStyle={position:"absolute",left:"0",top:'0',width:"20px",height:"20px",backgroundColor:"red"};
   const clickButton = (e)=>{
     // dispatch a request to change the iscompleted->true
-
+    let iscompleted = todo.iscompleted
     dispatch({
       type:`toDos/updateState`,
       payload: {
-        iscompleted: true
+        iscompleted: !iscompleted
       }
     })
     console.log(todo.iscompleted)

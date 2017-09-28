@@ -14,13 +14,15 @@ const FormItem = Form.Item
 const TodoList = ({
   dispatch,
   toDos,
+  toDos: {
+    list
+  },
   form,
   form: {
     getFieldsValue,
     getFieldDecorator
   }
 }) => {
-  let todos = []
   const onPressEnter = (e) => {
     let payload = getFieldsValue()
 
@@ -39,13 +41,13 @@ const TodoList = ({
       }
     })
 
-    todos=list.map(function(item, index){
-      return <TodoItem todo={item} key={index+1}/>
-    })
+
   
   }
 
-
+  let todos=list.map(function(item, index){
+    return <TodoItem todo={item} key={index+1}/>
+  })
   return (
     <div className={styles.todos}>
         <h1 style={{marginBottom: '10px'}}>todos</h1>
