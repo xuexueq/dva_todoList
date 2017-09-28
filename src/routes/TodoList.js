@@ -20,14 +20,12 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
-  let todos = []
   const onPressEnter = (e) => {
     let payload = getFieldsValue()
 
     let item = payload.item
     let iscompleted = false
-    let list = []
-
+    let list = toDos.list
     if(item){
       list.push({item:item,iscompleted:false})          
     }
@@ -38,13 +36,11 @@ const TodoList = ({
         list: list
       }
     })
-
-    todos=list.map(function(item, index){
-      return <TodoItem todo={item} key={index+1}/>
-    })
-  
   }
 
+  let todos=toDos.list.map(function(item, index){
+      return <TodoItem todo={item} key={index+1}/>
+    })
 
   return (
     <div className={styles.todos}>
