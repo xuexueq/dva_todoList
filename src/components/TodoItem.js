@@ -20,10 +20,10 @@ const TodoItem = ({
     dispatch({
       type:`toDos/updateState`,
       payload: {
+        id:todo.id,
         iscompleted: iscompleted
       }
     })
-    console.log(iscompleted)
   }
   return (
     <div style={{position:"relative",height: '20px',marginBottom:'5px'}}>
