@@ -7,6 +7,7 @@ function RouterConfig({ history }) {
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={TodoList} />
+         <Route path="/completed" exact component={TodoList} />       
       </Switch>
     </Router>
   );

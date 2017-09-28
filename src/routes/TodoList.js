@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { connect } from 'dva'
+import {Link} from 'dva/router'
 import styles from './TodoList.css'
 import { 
   Card,
@@ -57,7 +58,7 @@ const TodoList = ({
 
     <div className={styles.todos}>
       <h1 style={{marginBottom: '10px',textAlign: 'center'}}>todos</h1>
-        <Card style = {{padding: '40px'}}>
+        <Card style = {{padding: '40px 40px 0 40px'}}>
         <FormItem>
           {getFieldDecorator('item',{
             initialValue: ''
@@ -73,7 +74,7 @@ const TodoList = ({
         <div>
           {todos}
         </div>
-        <Footer/>
+        <Link to = {'/completed'}>activecompleted</Link>
         </Card>
     </div>
 
