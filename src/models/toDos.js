@@ -4,7 +4,8 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: []
+    list: [],
+    iscompleted: false
   },
 
   subscriptions: {
@@ -13,21 +14,16 @@ export default {
   },
 
   effects: {
-    * todoAdd ({ payload}, { call, put }) {
-
-      yield put({
-        type: `addSuccess`,
-        payload: {
-          list: payload.list
-        }
-      })
-    }
   },
 
+
   reducers: {
-    addSuccess(state, action) {
-      return { ...state, ...action.payload.list };
+    todoAdd(state, action) {
+      return { ...state, ...action.payload};
     },
+    updateState(state, action) {
+      return { ...state, ...action.payload};
+    }
   },
 
 };
