@@ -11,6 +11,7 @@ import {
 import TodoItem from '../components/TodoItem'
 import Footer from '../components/Footer'
 
+const uniqid = require('uniqid')
 const FormItem = Form.Item
 
 const TodoList = ({
@@ -31,16 +32,21 @@ const TodoList = ({
     let item = payload.item
     let iscompleted = false
 
-    if(item){
-      list.push({item:item,iscompleted:false})          
+    if(item.trim()){
+      const id=uniqid();
+      list.push({
+        item:item,
+        iscompleted:false,
+        id:id
+      })  
+      dispatch({
+        type: `toDos/updateState`,
+        payload: {
+          //list: list
+        }
+      })    
     }
 
-    dispatch({
-      type: `toDos/updateState`,
-      payload: {
-        //list: list
-      }
-    })
   }
 
   let todos=list.map(function(item, index){

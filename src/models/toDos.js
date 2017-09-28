@@ -4,11 +4,8 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: [{
-      item:'drink water',
-      iscompleted:false,
-      id:'123sqw'
-    }]
+    list: [],
+    iscompleted: false
   },
 
   subscriptions: {
@@ -21,18 +18,17 @@ export default {
 
 
   reducers: {
-    activeitem(state, action) {
-        action.payload.todo.iscompleted = ! action.payload.todo.iscompleted
+    updateState(state, action) {
       return { ...state, ...action.payload};
     },
-    updateState(state, action) {
+    activeitem(state, action) {
       return {
         ...state,
         list:state.list.map(todo=>todo.id==action.payload.id?
           {...todo,iscompleted:action.payload.iscompleted}:
           todo
         )
-      }
+      };
     }
   },
 

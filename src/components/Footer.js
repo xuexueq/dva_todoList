@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Footer = () => {
-	return <div>ggg</div>
+	return <div>footer</div>
 }
 
 export default Footer
