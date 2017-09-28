@@ -10,15 +10,20 @@ const TodoItem = ({
   //console.log('item',todo)
 
   let todos = []
-  const buttonStyle={position:"absolute",left:"0",top:'0',width:"20px",height:"20px",backgroundColor:"pink"};
-  const completedStyle={position:"absolute",left:"0",top:'0',width:"20px",height:"20px",backgroundColor:"red"};
+  const buttonStyle={position:"absolute",left:"0",top:'0',width:"30px",height:"30px",backgroundColor:"pink"};
+  const completedbuttonStyle={position:"absolute",left:"0",top:'0',width:"30px",height:"30px",backgroundColor:"red"};
+
+  const textStyle = {position:"absolute",left:"40px",fontWeight:'bold'}
+  const completedtextStyle = {position:"absolute",left:"40px",fontStyle:'italic',textDecoration:'line-through',color:'#d9d9d9'}
+
   const clickButton = (e)=>{
-    e.preventDefault()
+    //e.preventDefault()
     // dispatch a request to change the iscompleted->true
     let iscompleted = todo.iscompleted
     iscompleted = ! iscompleted
+  
     dispatch({
-      type:`toDos/updateState`,
+      type:`toDos/activeitem`,
       payload: {
         id:todo.id,
         iscompleted: iscompleted
@@ -26,9 +31,9 @@ const TodoItem = ({
     })
   }
   return (
-    <div style={{position:"relative",height: '20px',marginBottom:'5px'}}>
-      <div style={todo.iscompleted? completedStyle :buttonStyle} onClick={clickButton}></div>
-      <div style={{position:"absolute",left:"25px"}}>{todo.item}</div>
+    <div style={{position:"relative",height: '30px',marginBottom:'7px',fontSize:'20px'}}>
+      <div style={todo.iscompleted? completedbuttonStyle :buttonStyle} onClick={clickButton}></div>
+      <div style={todo.iscompleted? completedtextStyle :textStyle}>{todo.item}</div>
     </div>
   )          
 }

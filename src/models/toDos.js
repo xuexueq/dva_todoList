@@ -21,7 +21,8 @@ export default {
 
 
   reducers: {
-    todoAdd(state, action) {
+    activeitem(state, action) {
+        action.payload.todo.iscompleted = ! action.payload.todo.iscompleted
       return { ...state, ...action.payload};
     },
     updateState(state, action) {

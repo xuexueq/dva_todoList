@@ -3,11 +3,13 @@ import React from 'react'
 import { connect } from 'dva'
 import styles from './TodoList.css'
 import { 
+  Card,
   Input,
   Form
 } from 'antd'
 
 import TodoItem from '../components/TodoItem'
+import Footer from '../components/Footer'
 
 const FormItem = Form.Item
 
@@ -34,9 +36,9 @@ const TodoList = ({
     }
 
     dispatch({
-      type: `toDos/todoAdd`,
+      type: `toDos/updateState`,
       payload: {
-        list: list
+        //list: list
       }
     })
   }
@@ -46,8 +48,10 @@ const TodoList = ({
  })
 
   return (
+
     <div className={styles.todos}>
-        <h1 style={{marginBottom: '10px'}}>todos</h1>
+      <h1 style={{marginBottom: '10px',textAlign: 'center'}}>todos</h1>
+        <Card style = {{padding: '40px'}}>
         <FormItem>
           {getFieldDecorator('item',{
             initialValue: ''
@@ -55,7 +59,7 @@ const TodoList = ({
             <Input
             className="new-todo"
             placeholder="What needs to be done?"
-            style = {{width: 200}}
+            style = {{width: '100%'}}
             onPressEnter = {onPressEnter}
             />
           )}
@@ -63,7 +67,10 @@ const TodoList = ({
         <div>
           {todos}
         </div>
+        <Footer/>
+        </Card>
     </div>
+
   );
 }
 
