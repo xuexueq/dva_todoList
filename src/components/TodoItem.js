@@ -15,13 +15,15 @@ const TodoItem = ({
   const clickButton = (e)=>{
     e.preventDefault()
     // dispatch a request to change the iscompleted->true
+    let iscompleted = todo.iscompleted
+    iscompleted = ! iscompleted
     dispatch({
       type:`toDos/updateState`,
       payload: {
-        todo: todo
+        iscompleted: iscompleted
       }
     })
-    console.log(todo.iscompleted)
+    console.log(iscompleted)
   }
   return (
     <div style={{position:"relative",height: '20px',marginBottom:'5px'}}>

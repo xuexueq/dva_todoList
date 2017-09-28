@@ -4,10 +4,7 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: [{
-      item:'drink water',
-      iscompleted:false
-    }]
+    list: []
   },
 
   subscriptions: {
@@ -24,8 +21,6 @@ export default {
       return { ...state, ...action.payload};
     },
     updateState(state, action) {
-      action.payload.todo.iscompleted = !action.payload.todo.iscompleted
-      
       return { ...state, ...action.payload};
     }
   },

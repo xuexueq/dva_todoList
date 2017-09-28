@@ -28,7 +28,7 @@ const TodoList = ({
 
     let item = payload.item
     let iscompleted = false
-    let list = toDos.list
+
     if(item){
       list.push({item:item,iscompleted:false})          
     }
