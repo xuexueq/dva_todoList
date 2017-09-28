@@ -41,7 +41,7 @@ const TodoList = ({
     })
   }
 
-  let todos=toDos.list.map(function(item, index){
+  let todos=list.map(function(item, index){
       return <TodoItem todo={item} key={index+1}/>
  })
 

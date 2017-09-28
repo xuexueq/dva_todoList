@@ -7,18 +7,18 @@ const TodoItem = ({
   dispatch,
   toDos,  
 }) => {
-  console.log('item',todo)
+  //console.log('item',todo)
 
   let todos = []
   const buttonStyle={position:"absolute",left:"0",top:'0',width:"20px",height:"20px",backgroundColor:"pink"};
   const completedStyle={position:"absolute",left:"0",top:'0',width:"20px",height:"20px",backgroundColor:"red"};
   const clickButton = (e)=>{
+    e.preventDefault()
     // dispatch a request to change the iscompleted->true
-    let iscompleted = todo.iscompleted
     dispatch({
       type:`toDos/updateState`,
       payload: {
-        iscompleted: !iscompleted
+        todo: todo
       }
     })
     console.log(todo.iscompleted)
