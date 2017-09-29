@@ -15,19 +15,16 @@ const TodoItem = ({
   let todos = []
   let iscompleted = todo.iscompleted
 
-  const btnClass = cx(
-    'btnbasic',
-    {
-      iconfont: iscompleted
+  const btnClass = cx({
+    btnbasic:true,
+    'iconfont icon-correct' : iscompleted
     }
   )
 
-  const textClass = cx(
-    'textbasic',
-    {
+  const textClass = cx({
+      textbasic:true,
       textcompletedClass: iscompleted
-    }
-    )
+    })
 
   const clickButton = (e)=>{
     //e.preventDefault()
@@ -45,7 +42,7 @@ const TodoItem = ({
   }
   return (
     <div style={{position:"relative",height: '30px',marginBottom:'7px',fontSize:'20px'}}>
-      <i className = {btnClass} onClick={clickButton}>&#xe600;</i>
+      <i className = {btnClass} onClick={clickButton}></i>
       <div className = {textClass}>{todo.item}</div>
     </div>
   )          
