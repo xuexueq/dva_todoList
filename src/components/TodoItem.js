@@ -1,25 +1,38 @@
 
 import React from 'react'
 import { connect } from 'dva'
+import styles from './TodoItem.css'
+
+let classNames = require('classnames/bind')
+
+let cx = classNames.bind(styles)
 
 const TodoItem = ({
   todo,
   dispatch,
   toDos,  
 }) => {
-  //console.log('item',todo)
-
   let todos = []
-  const buttonStyle={position:"absolute",left:"0",top:'0',width:"30px",height:"30px",backgroundColor:"pink"};
-  const completedbuttonStyle={position:"absolute",left:"0",top:'0',width:"30px",height:"30px",backgroundColor:"red"};
+  let iscompleted = todo.iscompleted
 
-  const textStyle = {position:"absolute",left:"40px",fontWeight:'bold'}
-  const completedtextStyle = {position:"absolute",left:"40px",fontStyle:'italic',textDecoration:'line-through',color:'#d9d9d9'}
+  const btnClass = cx(
+    'btnbasic',
+    {
+      iconfont: iscompleted
+    }
+  )
+
+  const textClass = cx(
+    'textbasic',
+    {
+      textcompletedClass: iscompleted
+    }
+    )
 
   const clickButton = (e)=>{
     //e.preventDefault()
     // dispatch a request to change the iscompleted->true
-    let iscompleted = todo.iscompleted
+
     iscompleted = ! iscompleted
   
     dispatch({
@@ -32,8 +45,8 @@ const TodoItem = ({
   }
   return (
     <div style={{position:"relative",height: '30px',marginBottom:'7px',fontSize:'20px'}}>
-      <div style={todo.iscompleted? completedbuttonStyle :buttonStyle} onClick={clickButton}></div>
-      <div style={todo.iscompleted? completedtextStyle :textStyle}>{todo.item}</div>
+      <i className = {btnClass} onClick={clickButton}>&#xe600;</i>
+      <div className = {textClass}>{todo.item}</div>
     </div>
   )          
 }

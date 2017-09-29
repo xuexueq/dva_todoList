@@ -24,9 +24,8 @@ export default {
     activeitem(state, action) {
       return {
         ...state,
-        list:state.list.map(todo=>todo.id==action.payload.id?
-          {...todo,iscompleted:action.payload.iscompleted}:
-          todo
+        list:state.list.map(item=>item.id==action.payload.id?
+          {...item,iscompleted: action.payload.iscompleted}:item
         )
       };
     }

@@ -2,6 +2,8 @@
 import React from 'react'
 import { connect } from 'dva'
 import {Link} from 'dva/router'
+import pathToRegexp from 'path-to-regexp'
+
 import styles from './TodoList.css'
 import { 
   Card,
@@ -17,6 +19,7 @@ const FormItem = Form.Item
 
 const TodoList = ({
   dispatch,
+  location,
   toDos,
   toDos: {
     list
@@ -27,6 +30,10 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
+  const {pathname,query} = location
+
+  const entercompleted = pathToRegexp(`/completed`).test(pathname)
+
   const onPressEnter = (e) => {
     let payload = getFieldsValue()
 
@@ -47,8 +54,16 @@ const TodoList = ({
         }
       })    
     }
-
   }
+
+/*  if(entercompleted){  
+    dispatch({
+      type:  `toDos/entercompleted`,
+      payload: {
+      }
+    })
+}*/
+
 
   let todos=list.map(function(item, index){
       return <TodoItem todo={item} key={index+1}/>
