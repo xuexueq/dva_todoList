@@ -10,16 +10,13 @@
 	display: flex;
   justify-content: center;
   align-items: center;
+  color: green;
 }
 .textbasic {
 	position: absolute;
 	left: 40px;
 	font-weight: bold;
 
-}
-
-.icon-correct {
-	color: green;
 }
 
 .textcompletedClass {
