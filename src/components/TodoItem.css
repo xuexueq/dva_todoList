@@ -15,7 +15,11 @@
 	position: absolute;
 	left: 40px;
 	font-weight: bold;
-	background-color: white;
+
+}
+
+.icon-correct {
+	color: green;
 }
 
 .textcompletedClass {
