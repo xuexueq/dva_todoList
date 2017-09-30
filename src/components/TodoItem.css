@@ -1,4 +1,15 @@
-@import url('https://at.alicdn.com/t/font_431762_jumvvpu0y8uuwhfr.css');
+@import url('https://at.alicdn.com/t/font_431650_eba02qwxvxg06bt9.css');
+@import url('https://at.alicdn.com/t/font_432498_t0cuxzuc0x1lwhfr.css');
+
+.item {
+	position: relative;
+	height:  30px;
+	margin-bottom: 7px;
+	font-size: 20px;
+	line-height: 30px;
+
+}
+
 .btnbasic {
 	border-radius: 20px;
 	border: 1px solid #e4dada;
@@ -8,25 +19,25 @@
 	width: 30px;
 	height: 30px;
 	display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
+    color: green;
 }
 .textbasic {
 	position: absolute;
 	left: 40px;
 	font-weight: bold;
-
-}
-
-.icon-correct {
-	color: green;
 }
 
 .textcompletedClass {
-	text-align: center;
-
 	font-style: italic;
 	text-decoration: line-through;
 	color: #d9d9d9;
 	font-weight: normal;
+}
+
+.wrong {
+	width: 10px;
+	float: right;
+	color: #d26f67;
 }

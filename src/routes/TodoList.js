@@ -1,11 +1,14 @@
-
 import React from 'react'
-import { connect } from 'dva'
-import {Link} from 'dva/router'
+import {
+  connect
+} from 'dva'
+import {
+  Link
+} from 'dva/router'
 import pathToRegexp from 'path-to-regexp'
 
 import styles from './TodoList.css'
-import { 
+import {
   Card,
   Input,
   Form
@@ -30,44 +33,47 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
-  const {pathname,query} = location
+  const {
+    pathname,
+    query
+  } = location
 
   const entercompleted = pathToRegexp(`/completed`).test(pathname)
 
-  const onPressEnter = (e) => {
+  const onPressEnter = () => {
     let payload = getFieldsValue()
 
     let item = payload.item
     let iscompleted = false
 
-    if(item.trim()){
-      const id=uniqid();
+    if (item.trim()) {
+      const id = uniqid();
       list.push({
-        item:item,
-        iscompleted:false,
-        id:id
-      })  
+        item: item,
+        iscompleted: false,
+        id: id
+      })
       dispatch({
         type: `toDos/updateState`,
         payload: {
           //list: list
         }
-      })    
+      })
     }
   }
 
-/*  if(entercompleted){  
-    dispatch({
-      type:  `toDos/entercompleted`,
-      payload: {
-      }
-    })
-}*/
+  /*  if(entercompleted){  
+      dispatch({
+        type:  `toDos/entercompleted`,
+        payload: {
+        }
+      })
+  }*/
 
 
-  let todos=list.map(function(item, index){
-      return <TodoItem todo={item} key={index+1}/>
- })
+  let todos = list.map(function(item, index) {
+    return <TodoItem todo={item} data_key={index} key={index+1}/>
+  })
 
   return (
 
@@ -96,10 +102,11 @@ const TodoList = ({
   );
 }
 
-TodoList.propTypes = {
-};
+TodoList.propTypes = {};
 
-const mapStateToProps = ({toDos}) => {
+const mapStateToProps = ({
+  toDos
+}) => {
   return {
     toDos
   }
