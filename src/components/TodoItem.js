@@ -13,6 +13,9 @@ const TodoItem = ({
   todo,
   dispatch,
   toDos,
+  toDos: {
+    activeTodoCount
+  }
 }) => {
 
   let todos = []

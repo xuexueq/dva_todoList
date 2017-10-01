@@ -2,31 +2,25 @@
 @import url('https://at.alicdn.com/t/font_432498_t0cuxzuc0x1lwhfr.css');
 
 .item {
-	position: relative;
-	height:  30px;
-	margin-bottom: 7px;
+	height:  50px;
 	font-size: 20px;
-	line-height: 30px;
-
+	line-height: 50px;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .btnbasic {
-	border-radius: 20px;
+	display: inline-block;
+	border-radius: 50%;
 	border: 1px solid #e4dada;
-	position: absolute;
-	left: 0;
-	top: 0;
 	width: 30px;
 	height: 30px;
-	display: flex;
-    justify-content: center;
-    align-items: center;
+	text-align: center;
     color: green;
 }
 .textbasic {
-	position: absolute;
-	left: 40px;
+	display: inline-block;
 	font-weight: bold;
+	margin-left: 10px;
 }
 
 .textcompletedClass {
@@ -37,7 +31,7 @@
 }
 
 .wrong {
-	width: 10px;
+	margin-right: 10px;
 	float: right;
 	color: #d26f67;
 }

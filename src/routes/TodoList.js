@@ -21,8 +21,8 @@ const uniqid = require('uniqid')
 const FormItem = Form.Item
 
 const TodoList = ({
-  dispatch,
   location,
+  dispatch,
   toDos,
   toDos: {
     list
@@ -33,53 +33,53 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
-  const {
-    pathname,
-    query
-  } = location
+  const onPressEnter = (e) => {
+      let payload = getFieldsValue()
 
-  const entercompleted = pathToRegexp(`/completed`).test(pathname)
+      let item = payload.item
+      let iscompleted = false
 
-  const onPressEnter = () => {
-    let payload = getFieldsValue()
+      if (item.trim()) {
+        const id = uniqid();
+        list.push({
+          item: item,
+          iscompleted: false,
+          id: id
+        })
 
-    let item = payload.item
-    let iscompleted = false
 
-    if (item.trim()) {
-      const id = uniqid();
-      list.push({
-        item: item,
-        iscompleted: false,
-        id: id
-      })
-      dispatch({
-        type: `toDos/updateState`,
-        payload: {
-          //list: list
-        }
-      })
+        dispatch({
+          type: `toDos/updateState`,
+          payload: {
+            //list: list
+          }
+        })
+      }
+      e.target.value = ''
     }
+    /*  if(entercompleted){  
+        dispatch({
+          type:  `toDos/entercompleted`,
+          payload: {
+          }
+        })
+    }*/
+  let todos = []
+  if (list.length) {
+    todos = list.map(function(item, index) {
+      return <TodoItem todo={item} data_key={index} key={index+1}/>
+    })
   }
 
-  /*  if(entercompleted){  
-      dispatch({
-        type:  `toDos/entercompleted`,
-        payload: {
-        }
-      })
-  }*/
-
-
-  let todos = list.map(function(item, index) {
-    return <TodoItem todo={item} data_key={index} key={index+1}/>
-  })
-
+  let footer
+  if (list.length) {
+    footer = <Footer />
+  }
   return (
 
     <div className={styles.todos}>
       <h1 style={{marginBottom: '10px',textAlign: 'center'}}>todos</h1>
-        <Card style = {{padding: '40px 40px 0 40px'}}>
+        <Card className={styles.card}>
         <FormItem>
           {getFieldDecorator('item',{
             initialValue: ''
@@ -95,7 +95,7 @@ const TodoList = ({
         <div>
           {todos}
         </div>
-        <Link to = {'/completed'}>activecompleted</Link>
+        {footer}
         </Card>
     </div>
 

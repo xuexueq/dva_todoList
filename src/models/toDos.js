@@ -3,7 +3,8 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: []
+    list: [],
+    activeTodoCount: 0
   },
 
   subscriptions: {
