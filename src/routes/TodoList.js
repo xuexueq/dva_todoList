@@ -55,7 +55,7 @@ const TodoList = ({
           }
         })
       }
-      e.target.value = ''
+      // e.target.value = ''
     }
     /*  if(entercompleted){  
         dispatch({
