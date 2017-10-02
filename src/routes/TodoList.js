@@ -92,9 +92,7 @@ const TodoList = ({
             />
           )}
         </FormItem>
-        <div>
-          {todos}
-        </div>
+        {todos}
         {footer}
         </Card>
     </div>

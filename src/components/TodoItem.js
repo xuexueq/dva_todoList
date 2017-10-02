@@ -41,8 +41,7 @@ const TodoItem = ({
   const clickButton = (e) => {
     //e.preventDefault()
     // dispatch a request to change the iscompleted->true
-
-    iscompleted = !iscompleted
+    iscompleted = ! iscompleted  
 
     dispatch({
       type: `toDos/activeitem`,
