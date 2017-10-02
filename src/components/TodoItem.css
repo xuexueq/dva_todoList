@@ -26,6 +26,7 @@
 	margin: 10px 0;
 	text-align: center;
   color: green;
+  cursor: pointer;
 }
 .textbasic {
 	float: left;;
@@ -44,4 +45,5 @@
 	margin-right: 10px;
 	float: right;
 	color: #d26f67;
+	cursor: pointer;
 }
