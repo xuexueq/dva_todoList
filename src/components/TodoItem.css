@@ -8,17 +8,27 @@
     border-bottom: 1px solid #e6e6e6;
 }
 
+.correct{
+
+}
+.correct::before{
+	position: relative;
+	top: -10px;
+}
+
 .btnbasic {
-	display: inline-block;
+	composes:correct;
+	float: left;
 	border-radius: 50%;
 	border: 1px solid #e4dada;
 	width: 30px;
 	height: 30px;
+	margin: 10px 0;
 	text-align: center;
-    color: green;
+  color: green;
 }
 .textbasic {
-	display: inline-block;
+	float: left;;
 	font-weight: bold;
 	margin-left: 15px;
 }

@@ -25,7 +25,7 @@ const TodoItem = ({
 
   const btnClass = cx({
     btnbasic: true,
-    'iconfont icon-correct': iscompleted
+    'correct iconfont icon-correct': iscompleted
   })
 
   const textClass = cx({
