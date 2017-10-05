@@ -7,16 +7,26 @@
 }
 
 .selected {
-	display: inline-block;
-	text-align: center;
+	position: absolute; /*??*/
+    right: 0;
+    left: 0
 }
 
 .selected li {
 	display: inline-block;
-	margin-right: 10px;
+}
+
+.selected li a {
+	color: inherit;
+    margin: 3px;
+    padding: 3px 7px;
+    text-decoration: none;
+    border: 1px solid rgba(202, 64, 14, 0.39);
+    border-radius: 3px;
 }
 
 .button {
+	position: relative; /*??*/
 	border: 0;
 	float: right;
 	background: none;

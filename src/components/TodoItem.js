@@ -17,8 +17,7 @@ class TodoItem extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      editText: this.props.todo.item,
-      dispatch: this.props.dispatch
+      editText: this.props.todo.item
     }
   }
 

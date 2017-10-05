@@ -1,3 +1,12 @@
+import {
+  hashHistory
+} from 'dva/router'
+import {
+  parse,
+  stringify
+} from 'qs'
+import pathToRegexp from 'path-to-regexp'
+
 export default {
 
   namespace: 'toDos',
@@ -7,8 +16,11 @@ export default {
       item: 'drink water',
       iscompleted: false,
       id: 384975
-    }],
-    activeTodoCount: 0
+    }, {
+      item: 'wash clothes',
+      iscompleted: true,
+      id: 565354
+    }]
   },
 
   subscriptions: {
@@ -16,6 +28,46 @@ export default {
       dispatch,
       history
     }) { // eslint-disable-line
+      history.listen(({
+        pathname,
+        query
+      }) => {
+        if (pathToRegexp(`/`).test(pathname)) {
+          dispatch({
+            type: 'routerAll'
+          })
+        }
+
+      })
+
+      history.listen(({
+        pathname,
+        query
+      }) => {
+        if (pathToRegexp(`/active`).test(pathname)) {
+          dispatch({
+            type: 'routerActive'
+          })
+        }
+
+      })
+
+      history.listen(({
+        pathname,
+        query
+      }) => {
+        if (pathToRegexp(`/completed`).test(pathname)) {
+          dispatch({
+            type: 'updateState',
+            payload: {
+              rightsSearch: '',
+              rightsCurrentPage: 1
+            }
+          })
+        }
+
+      })
+
     },
   },
 
@@ -29,6 +81,22 @@ export default {
         ...action.payload
       };
     },
+
+    routerAll(state, action) {
+      return {
+        ...state
+      }
+    },
+
+    routerActive(state, action) {
+      return {
+        ...state,
+        list: state.list.filter(function(item, index, array) {
+          return (item.iscompleted === false)
+        })
+      }
+    },
+
     activeitem(state, action) {
       return {
         ...state,

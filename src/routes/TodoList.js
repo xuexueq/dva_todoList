@@ -33,7 +33,7 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
-  const onPressEnter = (e) => {
+  const onPressEnter = (value) => {
       let payload = getFieldsValue()
 
       let item = payload.item
@@ -56,6 +56,7 @@ const TodoList = ({
         })
       }
       // e.target.value = ''
+      console.log('input', value)
     }
     /*  if(entercompleted){  
         dispatch({
@@ -64,6 +65,14 @@ const TodoList = ({
           }
         })
     }*/
+
+  const onDeleteAllCompleted = (e) => {
+    console.log('list', e)
+    dispatch({
+      type: `toDos/routerActive`
+    })
+  }
+
   let todos = []
   if (list.length) {
     todos = list.map(function(item, index) {
@@ -73,7 +82,7 @@ const TodoList = ({
 
   let footer
   if (list.length) {
-    footer = <Footer list={list}/>
+    footer = <Footer list={list} onDeleteAllCompleted={onDeleteAllCompleted}/>
   }
   return (
 
