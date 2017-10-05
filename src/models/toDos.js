@@ -3,7 +3,11 @@ export default {
   namespace: 'toDos',
 
   state: {
-    list: [],
+    list: [{
+      item: 'drink water',
+      iscompleted: false,
+      id: 384975
+    }],
     activeTodoCount: 0
   },
 
@@ -20,7 +24,8 @@ export default {
 
   reducers: {
     updateState(state, action) {
-      return {...state,
+      return {
+        ...state,
         ...action.payload
       };
     },
@@ -38,6 +43,15 @@ export default {
       return {
         ...state
       }
+    },
+
+    applyEdit(state, action) {
+      return {
+        ...state,
+        list: state.list.map(value => value.id == action.payload.id ? {...value,
+          item: action.payload.editText
+        } : value)
+      };
     }
 
   }

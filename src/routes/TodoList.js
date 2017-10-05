@@ -73,7 +73,7 @@ const TodoList = ({
 
   let footer
   if (list.length) {
-    footer = <Footer />
+    footer = <Footer list={list}/>
   }
   return (
 

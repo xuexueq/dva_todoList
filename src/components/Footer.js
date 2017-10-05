@@ -5,7 +5,9 @@ import {
 	Link
 } from 'dva/router'
 
-const Footer = ({}) => {
+const Footer = ({
+	list
+}) => {
 	const {
 		pathname,
 		query
@@ -13,8 +15,13 @@ const Footer = ({}) => {
 
 	const enteractive = pathToRegexp(`/active`).test(pathname)
 
+
+	/*	let clearButton = list.filter(() => {
+			value.iscompleted == true
+		})*/
+
 	return (
-		<div style={{textAlign:'center'}}>
+		<div>
 			<footer className={styles.footer}>
 				<span style={{float:'left'}}>num items left</span>
 				<ul className={styles.selected}>
@@ -22,7 +29,7 @@ const Footer = ({}) => {
 				  <li><Link to = {'/active'}>Active</Link></li>
 				  <li><Link to = {'/completed'}>Completed</Link></li>
 			 	</ul>
-			 	<button className={styles.button}>clear completed</button>
+	{ /*			 	{clearButton}*/ }
 			</footer>
 	   </div>
 	)

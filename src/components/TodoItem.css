@@ -5,8 +5,8 @@
 	height:  50px;
 	font-size: 20px;
 	line-height: 50px;
-  border-bottom: 1px solid #e6e6e6;
-  position: relative;
+  	border-bottom: 1px solid #e6e6e6;
+  	position: relative;
 }
 
 .correct{
@@ -26,8 +26,8 @@
 	height: 30px;
 	margin: 10px 0;
 	text-align: center;
-  color: green;
-  cursor: pointer;
+  	color: green;
+  	cursor: pointer;
 }
 .textbasic {
 	float: left;;

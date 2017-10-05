@@ -1,4 +1,6 @@
-import React,{Component} from 'react';
+import React, {
+  Component
+} from 'react';
 import ReactDom from 'react-dom'
 import {
   connect
@@ -11,58 +13,70 @@ const ESCAPE_KEY = 27;
 const ENTER_KEY = 13;
 
 class TodoItem extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      isEditing:false,
-      editText:this.props.todo.item
+    this.state = {
+      isEditing: false,
+      editText: this.props.todo.item,
+      dispatch: this.props.dispatch
     }
   }
 
-  changeEditState(){
+  changeEditState() {
     this.setState({
-      isEditing:true
+      isEditing: true
     })
   }
 
-  handleChange(e){  
+  handleChange(e) {
     console.log(e.target.value)
-      this.setState({editText: e.target.value});
+    this.setState({
+      editText: e.target.value
+    });
 
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     let val = this.state.editText.trim();
     if (val) {
       // dispatch save
       console.log(val)
       this.setState({
-        isEditing:false
+        isEditing: false
       })
     }
   }
 
-  handleKeyDown(event){
+
+  handleKeyDown(event) {
     if (event.which === ESCAPE_KEY) {
-            this.setState({
-              editText: this.props.todo.title,
-              isEditing:false
-            });
-          } else if (event.which === ENTER_KEY) {
-            this.handleSubmit(event);
-          }
+      this.setState({
+        editText: this.props.todo.item,
+        isEditing: false
+      });
+    } else if (event.which === ENTER_KEY) {
+      this.handleSubmit(event);
+    }
+
+    this.props.dispatch({
+      type: `toDos/applyEdit`,
+      payload: {
+        editText: this.state.editText,
+        id: this.props.todo.id
+      }
+    })
   }
 
-  componentDidUpdate(prevProps,prevState){
+  componentDidUpdate(prevProps, prevState) {
     if (!prevState.isEditing && this.state.isEditing) {
       let node = ReactDom.findDOMNode(this.refs.editField);
       node.focus();
-      console.log(node.value)
+      //console.log(node.value)
       node.setSelectionRange(node.value.length, node.value.length);
     }
   }
 
-  render(){
+  render() {
     const {
       data_key,
       todo,
@@ -72,7 +86,7 @@ class TodoItem extends Component {
         activeTodoCount
       }
     } = this.props;
-    
+
     let cx = classNames.bind(styles)
     let todos = []
     let iscompleted = todo.iscompleted
@@ -85,7 +99,7 @@ class TodoItem extends Component {
     })
 
     let editClass = cx({
-      edit:true,
+      edit: true,
       'show': this.state.isEditing
     })
 
@@ -94,15 +108,12 @@ class TodoItem extends Component {
       textcompletedClass: iscompleted
     })
 
-    const delClass = cx({
-      wrong: true,
-      'iconfont icon-wrong': true
-    })
+    const delClass = cx('wrong', 'iconfont icon-wrong')
 
     const clickButton = (e) => {
       //e.preventDefault()
       // dispatch a request to change the iscompleted->true
-      iscompleted = ! iscompleted  
+      iscompleted = !iscompleted
 
       dispatch({
         type: `toDos/activeitem`,
@@ -122,16 +133,17 @@ class TodoItem extends Component {
       })
     }
 
+
     return (
       <div className={itemClass}>
         <i className={btnClass} onClick={clickButton}></i>
         <div className={textClass} onDoubleClick={this.changeEditState.bind(this)} >{todo.item}</div>
         <input type="text" ref="editField" 
-        className={editClass} 
-        value={this.state.editText} 
-        onBlur={this.handleSubmit.bind(this)}
-        onKeyDown={this.handleKeyDown.bind(this)}
-        onChange={this.handleChange.bind(this)}/>
+          className={editClass} 
+          value={this.state.editText} 
+          onBlur={this.handleSubmit.bind(this)}
+          onKeyDown={this.handleKeyDown.bind(this)}
+          onChange={this.handleChange.bind(this)}/>
         <i className={delClass} onClick={onDelete}></i>
       </div>
     )
