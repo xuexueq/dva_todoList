@@ -67,7 +67,7 @@ const TodoList = ({
 
   const onDeleteAllCompleted = () => {
     dispatch({
-      type: `toDos/routerActive`
+      type: `toDos/deleteAllCompleted`
     })
   }
 

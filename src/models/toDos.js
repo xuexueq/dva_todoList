@@ -41,14 +41,8 @@ export default {
         ...action.payload
       };
     },
-
-    routerAll(state, action) {
-      return {
-        ...state
-      }
-    },
-
-    routerActive(state, action) {
+    
+    deleteAllCompleted(state, action) {
       return {
         ...state,
         list: state.list.filter(function(item, index, array) {
