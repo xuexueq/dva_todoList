@@ -29,6 +29,7 @@ const TodoList = ({
   },
   form,
   form: {
+    resetFields,
     getFieldsValue,
     getFieldDecorator
   }
@@ -60,16 +61,9 @@ const TodoList = ({
           }
         })
       }
-      // e.target.value = ''
-      console.log('input', value)
+
+      resetFields()
     }
-    /*  if(entercompleted){  
-        dispatch({
-          type:  `toDos/entercompleted`,
-          payload: {
-          }
-        })
-    }*/
 
   const onDeleteAllCompleted = () => {
     dispatch({
