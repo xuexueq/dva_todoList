@@ -33,6 +33,7 @@
 	float: left;;
 	font-weight: bold;
 	margin-left: 15px;
+	transition: color 0.4s;
 }
 
 .textcompletedClass {

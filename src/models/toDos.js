@@ -28,46 +28,6 @@ export default {
       dispatch,
       history
     }) { // eslint-disable-line
-      history.listen(({
-        pathname,
-        query
-      }) => {
-        if (pathToRegexp(`/`).test(pathname)) {
-          dispatch({
-            type: 'routerAll'
-          })
-        }
-
-      })
-
-      history.listen(({
-        pathname,
-        query
-      }) => {
-        if (pathToRegexp(`/active`).test(pathname)) {
-          dispatch({
-            type: 'routerActive'
-          })
-        }
-
-      })
-
-      history.listen(({
-        pathname,
-        query
-      }) => {
-        if (pathToRegexp(`/completed`).test(pathname)) {
-          dispatch({
-            type: 'updateState',
-            payload: {
-              rightsSearch: '',
-              rightsCurrentPage: 1
-            }
-          })
-        }
-
-      })
-
     },
   },
 

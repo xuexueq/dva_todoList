@@ -33,6 +33,11 @@ const TodoList = ({
     getFieldDecorator
   }
 }) => {
+  const {
+    pathname,
+    query
+  } = location
+
   const onPressEnter = (value) => {
       let payload = getFieldsValue()
 
@@ -66,8 +71,7 @@ const TodoList = ({
         })
     }*/
 
-  const onDeleteAllCompleted = (e) => {
-    console.log('list', e)
+  const onDeleteAllCompleted = () => {
     dispatch({
       type: `toDos/routerActive`
     })
@@ -75,7 +79,15 @@ const TodoList = ({
 
   let todos = []
   if (list.length) {
-    todos = list.map(function(item, index) {
+    let showList = list.filter((value) => {
+      switch (pathname){
+        case '/active': return value.iscompleted === false
+        case '/completed': return value.iscompleted === true
+        default: return true
+      }
+    })
+
+    todos = showList.map(function(item, index) {
       return <TodoItem todo={item} data_key={index} key={index+1}/>
     })
   }
