@@ -80,10 +80,7 @@ class TodoItem extends Component {
       data_key,
       todo,
       dispatch,
-      toDos,
-      toDos: {
-        activeTodoCount
-      }
+      toDos
     } = this.props;
 
     let cx = classNames.bind(styles)

@@ -53,6 +53,9 @@ const TodoList = ({
           id: id
         })
 
+      localStorage.setItem('list',JSON.stringify(list))
+/*      let data = JSON.parse(localStorage.getItem('list')) 
+      console.log('localStorage', data)*/
 
         dispatch({
           type: `toDos/updateState`,
@@ -66,8 +69,17 @@ const TodoList = ({
     }
 
   const onDeleteAllCompleted = () => {
+/*    let data = list.filter(function(item, index, array) {
+          return (item.iscompleted === false)
+    })  
+
+    localStorage.setItem('list',JSON.stringify(data))*/
+
     dispatch({
-      type: `toDos/deleteAllCompleted`
+      type: `toDos/deleteAllCompleted`,
+      payload: {
+        //list: data
+      }
     })
   }
 
