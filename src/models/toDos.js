@@ -29,7 +29,7 @@ export default {
       history
     }) { // eslint-disable-line
       history.listen(({ pathname, query }) => {
-        if (pathToRegexp(`/`).test(pathname)) {
+        if (pathToRegexp(`/`).test(pathname) || pathToRegexp(`/completed`).test(pathname) || pathToRegexp(`/active`).test(pathname)) {
           let data = localStorage.getItem('list') || ''
           dispatch({
             type: 'updateState',
